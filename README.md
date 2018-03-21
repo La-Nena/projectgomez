@@ -1,2 +1,2 @@
 # projectgomez
-This project is made for learning purposes
+This project is made for learning purposes.
