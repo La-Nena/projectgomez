@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang=esp>
+<head>
+<meta charset="UTF-8" />
+<title>
+    QueloQue
+</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script src="jquery/jquery-3.3.1.js"></script>
+<script src="scripts.js"></script>
+<script>
+    $(document).ready(function(){
+
+       var imagenes = document.querySelectorAll("#carros img");
+
+       for (var i=0;imagenes.length;i++){
+
+        imagenes[i].addEventListener("click",Carros,false);
+
+       }
+
+    });
+</script>
+<body>
+
+    <H1>Carros a la venta</H1>
+<div id="carros">
+<img src="img/002_0002.jpg" id="Ca">
+<img src="img/488gtb.png" id="F">
+<img src="img/USC50FOC051B021001.jpg" id="M">
+<img src="img/VA_c644c7ef3d4d47e9ad29f1eb9771131a.jpg" id="C">
+</div>
+</body>
+</head>
