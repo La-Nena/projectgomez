@@ -17,54 +17,46 @@
       </nav>
     </header>
 <body>
+    <div class="container">
 <h3>Cars to buy</h3>
-<div id="cars">
-<img src="img/002_0002.jpg" id="Ca">
-<img src="img/488gtb.png" id="F">
-<img src="img/USC50FOC051B021001.jpg" id="M">
-<img src="img/VA_c644c7ef3d4d47e9ad29f1eb9771131a.jpg" id="C">
+<div class="cars">
+<img class="img-fluid" src="img/002_0002.jpg" id="Ca">
+<img class="img-fluid" src="img/488gtb.png" id="F">
+<img class="img-fluid" src="img/USC50FOC051B021001.jpg" id="M">
+<img class="img-fluid" src="img/VA_c644c7ef3d4d47e9ad29f1eb9771131a.jpg" id="C">
 </div>
-
-<div id="container">
-
+<div class="row">
+  <div class="col-12">
   <div id="container1">
-    <ul>
-      <li><input type="checkbox" id="one">Cornets</input></li>
-      <li><input type="checkbox" id="2">Carpets</input></li>
-      <li><input type="checkbox" id="3">Vertical Doors</input></li>
-      <li><input type="checkbox" id="4">Neon</input></li>
-    </ul>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="1000" id="1">
+        <label class="form-check-label" for="1">
+            Cornets
+        </label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="2000" id="2">
+          <label class="form-check-label" for="2">
+              Carpets
+          </label>
+        </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="3000" id="3">
+          <label class="form-check-label" for="3">
+              Vertical Doors
+          </label>
+        </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="4000" id="4">
+          <label class="form-check-label" for="4">
+              Neon
+          </label>
+        </div>
   </div>
-
-  <div id="container2">
-    <ul>
-      <li><input type="checkbox" id="1">Cornets</input></li>
-      <li><input type="checkbox" id="2">Carpets</input></li>
-      <li><input type="checkbox" id="3">Vertical Doors</input></li>
-      <li><input type="checkbox"id="4">Neon</input></li>
-    </ul>
-  </div>
-
-  <div id="container3">
-    <ul>
-      <li><input type="checkbox" id="1">Cornets</input></li>
-      <li><input type="checkbox" id="2">Carpets</input></li>
-      <li><input type="checkbox" id="3">Vertical Doors</input></li>
-      <li><input type="checkbox" id="4">Neon</input></li>
-    </ul>
-  </div>
-
-  <div id="container4">
-    <ul>
-      <li><input type="checkbox" id="1">Cornets</input></li>
-      <li><input type="checkbox" id="2">Carpets</input></li>
-      <li><input type="checkbox" id="3">Vertical Doors</input></li>
-      <li><input type="checkbox" id="4">Neon</input></li>
-    </ul>
-  </div>
-
+</div>
+</div>
 </div>
 
-<input type="text" name="" id="text">
+<input type="text" id="text">
 </body>
 </html>

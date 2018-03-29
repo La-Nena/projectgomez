@@ -1,68 +1,51 @@
+var Ferrari = 20000;
+var Mustang = 30000;
+var Chevrolet = 40000;
+var Camaro = 50000;
+
+var selectedCar;
+var selectedCarPrice; 
+
 $(document).ready(function(){
 
-    var imagenes = document.querySelectorAll("#cars img");
+    var imagenes = $('.cars img');
+    $('body').on('click','img', Price);
+    $('body').on('click','img', calculateTotalPrice);
 
-    for(var i=0;imagenes.length;i++){
-
-        imagenes[i].addEventListener("click",Price,false);
-
-    }
-
-    var checkbox = document.querySelectorAll("#container #container1 input");
-   
-    for(var i=0;checkbox.length;i++){
-
-        if($('input').is(':checked')){
-
-            checkbox[i].addEventListener("click",add,false);
-
-        }
-
-    }
-
-    //THIS SHIT NO WORK. Maybe later i can use.
-    /*var checkbox = document.querySelectorAll("#container #container1 input");
-
-    for (var i=0;checkbox.length;i++){
-
-        if($("checkbox").prop("checked", true)){
-        checkbox[i].addEventListener("click",add,false);
-        }
-    }*/
-
+    $(':checkbox').change(function() {
+        calculateTotalPrice();
+    });
 })
 
+
+function calculateTotalPrice(){
+    var checkboxes = $(":checkbox:checked");
+    var totalPriceOfParts = 0;
+    totalPriceOfParts += selectedCarPrice;
+
+    checkboxes.each(function(index, object) {
+        var partPrice = parseInt(object.value, 10);
+        totalPriceOfParts += partPrice;
+    });
+
+     $('#text').val(totalPriceOfParts);
+}
+
 function Price(e){
-
-    var Ferrari = 20000;
-    var Mustang = 30000;
-    var Chevrolet = 40000;
-    var Camaro = 50000;
-
     if(e.target == F){
-
-        alert("The price is " + Ferrari);
-
+        selectedCarPrice = Ferrari;
     }
     else if (e.target == C){
-
-        alert("The price is " + Chevrolet)
-
+        selectedCarPrice = Chevrolet;
     }
     else if (e.target == Ca){
-
-        alert("The price is " + Camaro);
-
+        selectedCarPrice = Camaro;
     }
     else if (e.target == M){
+        selectedCarPrice = Mustang;
+    } 
 
-        alert("The price is "  + Mustang);
-    
-    } else {
-
-        alert("Nada ps");
-    }
-
+    selectedCar = e.target;
 }
 
 

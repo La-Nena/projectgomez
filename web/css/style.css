@@ -1,57 +1,37 @@
-h3{
-
+h3 {
 text-align: center;
 }
 
-#cars img{
-
+.cars img {
 width: 25%;
 height: 200px;
 border-radius:10px; 
 
 }
 
-#cars {
+.cars {
     width: 100%;
     height: 10%;
     display: flex;
     align-content: center;
-
 }
 
 #container1 ,#container2 ,#container3 ,#container4{
-
     background-color: #E6E6E6;
-    width: 18em;
-
-}
-
-#container{
-
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content:space-between;
-
 }
 
 ul {
-
     list-style: none;
     text-align: center;
-
 }
 
 ul li {
-
     margin-top:20px;
-
 }
 
 #text {
-
 position: absolute;
 bottom: 5em;
 left:35em;
 text-align: center;
-
 }
