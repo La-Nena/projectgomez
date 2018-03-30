@@ -1,13 +1,10 @@
-var Ferrari = 20000;
-var Mustang = 30000;
-var Chevrolet = 40000;
-var Camaro = 50000;
-
-var selectedCar;
 var selectedCarPrice; 
 
-$(document).ready(function(){
+var listOfCars = [];
 
+$(document).ready(function(){
+    getCarsFromDatabase();
+    
     var imagenes = $('.cars img');
     $('body').on('click','img', Price);
     $('body').on('click','img', calculateTotalPrice);
@@ -17,6 +14,19 @@ $(document).ready(function(){
     });
 })
 
+
+function getCarsFromDatabase(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/cars/",
+        cache: false,
+        success: function(data){
+          listOfCars = data;
+        },
+        error: function(data){
+        }
+      });
+}
 
 function calculateTotalPrice(){
     var checkboxes = $(":checkbox:checked");
@@ -32,20 +42,14 @@ function calculateTotalPrice(){
 }
 
 function Price(e){
-    if(e.target == F){
-        selectedCarPrice = Ferrari;
-    }
-    else if (e.target == C){
-        selectedCarPrice = Chevrolet;
-    }
-    else if (e.target == Ca){
-        selectedCarPrice = Camaro;
-    }
-    else if (e.target == M){
-        selectedCarPrice = Mustang;
-    } 
+    debugger;
+    var selectedCar = e.target.id;
 
-    selectedCar = e.target;
+    for(var i = 0; i < listOfCars.length; i++){
+        if(listOfCars[i].name == selectedCar){
+            selectedCarPrice = parseInt(listOfCars[i].price, 10);
+        }
+    }
 }
 
 
