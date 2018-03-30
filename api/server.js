@@ -3,6 +3,7 @@ var express = require('express'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Car = require('./models/carModel'), //created model loading here
+  Part = require('./models/partModel'),
   bodyParser = require('body-parser');
   
 // mongoose instance connection url connection
@@ -33,7 +34,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-var routes = require('./routes/carRoutes'); //importing route
+var routes = require('./routes/routes'); //importing route
 routes(app); //register the route
 
 

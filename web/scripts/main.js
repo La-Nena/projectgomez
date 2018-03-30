@@ -1,9 +1,11 @@
 var selectedCarPrice; 
 
 var listOfCars = [];
+var listOfParts = [];
 
 $(document).ready(function(){
     getCarsFromDatabase();
+    getPartsFromDataBase();
     
     var imagenes = $('.cars img');
     $('body').on('click','img', Price);
@@ -22,6 +24,18 @@ function getCarsFromDatabase(){
         cache: false,
         success: function(data){
           listOfCars = data;
+        },
+        error: function(data){
+        }
+      });
+}
+function getPartsFromDataBase(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/parts/",
+        cache: false,
+        success: function(data){
+          listOfParts = data;
         },
         error: function(data){
         }
