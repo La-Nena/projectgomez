@@ -5,10 +5,10 @@ var express = require('express'),
   Car = require('./models/carModel'), //created model loading here
   Part = require('./models/partModel'),
   bodyParser = require('body-parser');
-  
+
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/cardb'); 
+mongoose.connect('mongodb://localhost/cardb');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

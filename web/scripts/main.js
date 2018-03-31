@@ -1,73 +1,68 @@
-var selectedCarPrice; 
+var selectedCarPrice = 0;
+
 var listOfCars = [];
 var listOfParts = [];
 
-$(document).ready(function(){
+$(document).ready(function () {
     getCarsFromDatabase();
     getPartsFromDataBase();
-    var imagenes = $('.cars img');
-    $('body').on('click','img', Price);
-    $('body').on('click','img', calculateTotalPrice);
 
-    $(':checkbox').change(function() {
-        calculateTotalPrice();
-    });
+    $('body').on('click', 'img', selectCar);
+    $(':checkbox').change(calculateTotalPrice);
 })
 
 
-function getCarsFromDatabase(){
+function getCarsFromDatabase() {
     $.ajax({
         type: "GET",
         url: "http://localhost:3000/cars/",
         cache: false,
-        success: function(data){
-          listOfCars = data;
+        success: function (data) {
+            listOfCars = data;
         },
-        error: function(data){
+        error: function (data) {
         }
-      });
+    });
 }
-function getPartsFromDataBase(){
+function getPartsFromDataBase() {
     $.ajax({
         type: "GET",
         url: "http://localhost:3000/parts/",
         cache: false,
-        success: function(data){
-          listOfParts = data;
+        success: function (data) {
+            listOfParts = data;
         },
-        error: function(data){
+        error: function (data) {
         }
-      });
+    });
 }
 
-function calculateTotalPrice(){
-
-    var checkboxes = $(":checkbox:checked");
+function calculateTotalPrice() {
+    var checkboxes = $(".form-check-input:checkbox:checked");
     var totalPriceOfParts = 0;
 
-    if(checkboxes == true){
-        selectBox = checkboxes;
-        for(var i=0;i<listOfParts.length;i++){
-            if(listOfParts[i].name == selectBox.id){
-                totalPriceOfParts = parseInt(listOfParts[i].price, 10);
+    if (checkboxes.length > 0) {
+        for (var i = 0; i < listOfParts.length; i++) {
+            for (var j = 0; j < checkboxes.length; j++) {
+                if (checkboxes[j].id == listOfParts[i].name) {
+                    totalPriceOfParts += parseInt(listOfParts[i].price, 10);
+                }
             }
         }
-        totalPriceOfParts += selectedCarPrice;
     }
-    /*checkboxes.each(function(index, object) {
-        var listOfParts = parseInt(object.value, 10);
-        totalPriceOfParts += listOfParts;
-    });*/
-     $('#text').val(totalPriceOfParts);
+
+    var totalPrice = selectedCarPrice + totalPriceOfParts;
+    $('#sumTextbox').val(totalPrice);
 }
 
-function Price(e){
-    debugger;
-    var selectedCar = e.target.id;
+function selectCar(event) {
+    var selectedCar = event.target.id;
 
-    for(var i = 0; i < listOfCars.length; i++){
-        if(listOfCars[i].name == selectedCar){
+    for (var i = 0; i < listOfCars.length; i++) {
+        if (listOfCars[i].name == selectedCar) {
             selectedCarPrice = parseInt(listOfCars[i].price, 10);
         }
     }
+
+    calculateTotalPrice();
 }

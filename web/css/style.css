@@ -16,20 +16,11 @@ border-radius:10px;
     align-content: center;
 }
 
-#container1 ,#container2 ,#container3 ,#container4{
+#container1 {
     background-color: #E6E6E6;
 }
 
-ul {
-    list-style: none;
-    text-align: center;
-}
-
-ul li {
-    margin-top:20px;
-}
-
-#text {
+#sumTextbox {
 position: absolute;
 bottom: 5em;
 left:35em;
