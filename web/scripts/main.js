@@ -1,12 +1,10 @@
 var selectedCarPrice; 
-
 var listOfCars = [];
 var listOfParts = [];
 
 $(document).ready(function(){
     getCarsFromDatabase();
     getPartsFromDataBase();
-    
     var imagenes = $('.cars img');
     $('body').on('click','img', Price);
     $('body').on('click','img', calculateTotalPrice);
@@ -43,15 +41,23 @@ function getPartsFromDataBase(){
 }
 
 function calculateTotalPrice(){
+
     var checkboxes = $(":checkbox:checked");
     var totalPriceOfParts = 0;
-    totalPriceOfParts += selectedCarPrice;
 
-    checkboxes.each(function(index, object) {
-        var partPrice = parseInt(object.value, 10);
-        totalPriceOfParts += partPrice;
-    });
-
+    if(checkboxes == true){
+        selectBox = checkboxes;
+        for(var i=0;i<listOfParts.length;i++){
+            if(listOfParts[i].name == selectBox.id){
+                totalPriceOfParts = parseInt(listOfParts[i].price, 10);
+            }
+        }
+        totalPriceOfParts += selectedCarPrice;
+    }
+    /*checkboxes.each(function(index, object) {
+        var listOfParts = parseInt(object.value, 10);
+        totalPriceOfParts += listOfParts;
+    });*/
      $('#text').val(totalPriceOfParts);
 }
 
@@ -63,37 +69,5 @@ function Price(e){
         if(listOfCars[i].name == selectedCar){
             selectedCarPrice = parseInt(listOfCars[i].price, 10);
         }
-    }
-}
-
-
-//Here I will write the function that will 
-//add the price of the parts with the price of the cars
-//------------------------------------------------------
-
-function add(e){
-    
-    /*var Cars = [
-        "Ferrari"="20000",
-        "Mustang"="30000",
-        "Chevrolet"="40000",
-        "Camaro"="50000"
-    ]*/
-    
-    var Ferrari = 20000;
-    var Mustang = 30000;
-    var Chevrolet = 40000;
-    var Camaro = 50000;
-    var Cornets = 3000;
-    var Carpets = 2000;
-    var VerticalDoors = 5000;
-    var Neon = 10000;
-    var FC = Ferrari+Cornets;
-
-    if (e.target == one){
-
-
-    alert("Ahora el precio del" + Ferrari + "es de " + FC);
-    
     }
 }
